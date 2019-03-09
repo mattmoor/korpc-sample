@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "github.com/mattmoor/korpc/include/korpc.proto";
+
+package sample;
+
+service SampleService {
+  rpc Unary(Request) returns (Response) {
+    option (korpc.options) = {
+      container_concurrency: 20
+      env: {
+        name: "FOO"
+        value: "BAR"
+      }
+      env: {
+        name: "UGH"
+        value: "GAZUNK"
+      }
+      //    resources: {
+      //       requests: {
+      //          cpu: "100m"
+      //       }
+      //       limits: {
+      //          cpu: "1000m"
+      //       }
+      //    }
+    };
+  }
+
+  rpc Stream(stream Request) returns (stream Response) {
+    option (korpc.options) = {
+      service_account: "default" // Show that it shows up.
+      container_concurrency: 2
+      env: {
+        name: "FOO"
+        value: "BAZ"
+      }
+    };
+  }
+}
+
+message Request {
+  string msg = 1;
+}
+
+message Response {
+  string msg = 1;
+}
