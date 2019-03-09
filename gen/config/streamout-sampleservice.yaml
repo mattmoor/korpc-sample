@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: streamout-sampleservice
+  namespace: default
+spec:
+  template:
+    spec:
+      
+      
+      
+      containers:
+      - image: github.com/mattmoor/korpc-sample/gen/entrypoint/sampleservice/streamout
+        ports:
+        - name: h2c
+          containerPort: 8080
+        readinessProbe:
+          exec:
+            command: ["/ko-app/streamout", "probe"]
+        livenessProbe:
+          exec:
+            command: ["/ko-app/streamout", "probe"]
+        env:
+        resources:
+          limits:
+          requests:
