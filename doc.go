@@ -5,4 +5,4 @@ package sample
 // develop a korpc service.
 
 //go:generate korpc install
-//go:generate korpc generate --base=github.com/mattmoor/korpc-sample service.proto
+//go:generate korpc generate --base=github.com/mattmoor/korpc-sample --domain=mattmoor.io service.proto
