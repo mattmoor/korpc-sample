@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       
-      
+      containerConcurrency: 5
       
       containers:
       - image: github.com/mattmoor/korpc-sample/gen/entrypoint/sampleservice/streamin
@@ -21,6 +21,8 @@ spec:
           exec:
             command: ["/ko-app/streamin", "probe"]
         env:
+        - name: WHOAMI
+          value: I'm stream in.
         resources:
           limits:
           requests:

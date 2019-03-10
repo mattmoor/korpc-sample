@@ -1,15 +1,57 @@
 syntax = "proto3";
 
+import "github.com/mattmoor/korpc/include/korpc.proto";
+
 package sample;
 
 service SampleService {
-  rpc Unary(Request) returns (Response) {}
+  rpc Unary(Request) returns (Response) {
+    option (korpc.options) = {
+      container_concurrency: 20
+      env: {
+        name: "WHOAMI"
+        value: "I'm unary."
+      }
+    };
+  }
 
-  rpc StreamIn(stream Request) returns (Response) {}
+  rpc StreamIn(stream Request) returns (Response) {
+    option (korpc.options) = {
+      container_concurrency: 5
+      env: {
+        name: "WHOAMI"
+        value: "I'm stream in."
+      }
+    };
+  }
 
-  rpc StreamOut(Request) returns (stream Response) {}
+  rpc StreamOut(Request) returns (stream Response) {
+    option (korpc.options) = {
+      container_concurrency: 10
+      env: {
+        name: "WHOAMI"
+        value: "I'm stream out."
+      }
+    };
+  }
 
-  rpc Stream(stream Request) returns (stream Response) {}
+  rpc Stream(stream Request) returns (stream Response) {
+    option (korpc.options) = {
+      // I stream, so don't allow as much concurrency
+      container_concurrency: 2
+      env: {
+        name: "WHOAMI"
+        value: "I'm bidi streaming."
+      }
+      resources: {
+        requests: {
+          // I'm a pig
+          key: "memory"
+          value : "2Gi"
+        }
+      }
+    };
+  }
 }
 
 message Request {

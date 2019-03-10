@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       
-      
+      containerConcurrency: 20
       
       containers:
       - image: github.com/mattmoor/korpc-sample/gen/entrypoint/sampleservice/unary
@@ -21,6 +21,8 @@ spec:
           exec:
             command: ["/ko-app/unary", "probe"]
         env:
+        - name: WHOAMI
+          value: I'm unary.
         resources:
           limits:
           requests:

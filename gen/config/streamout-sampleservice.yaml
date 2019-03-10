@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       
-      
+      containerConcurrency: 10
       
       containers:
       - image: github.com/mattmoor/korpc-sample/gen/entrypoint/sampleservice/streamout
@@ -21,6 +21,8 @@ spec:
           exec:
             command: ["/ko-app/streamout", "probe"]
         env:
+        - name: WHOAMI
+          value: I'm stream out.
         resources:
           limits:
           requests:

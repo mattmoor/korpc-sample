@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       
-      
+      containerConcurrency: 2
       
       containers:
       - image: github.com/mattmoor/korpc-sample/gen/entrypoint/sampleservice/stream
@@ -21,6 +21,9 @@ spec:
           exec:
             command: ["/ko-app/stream", "probe"]
         env:
+        - name: WHOAMI
+          value: I'm bidi streaming.
         resources:
           limits:
           requests:
+            memory: 2Gi
