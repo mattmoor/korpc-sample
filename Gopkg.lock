@@ -2,11 +2,10 @@
 
 
 [[projects]]
-  digest = "1:64c2b533ffd17023738c534548ab2455d7f519bc15ed4225145425ed2222448b"
+  digest = "1:239c4c7fd2159585454003d9be7207167970194216193a8a210b8d29576f19c9"
   name = "github.com/golang/protobuf"
   packages = [
     "proto",
-    "protoc-gen-go/descriptor",
     "ptypes",
     "ptypes/any",
     "ptypes/duration",
@@ -15,14 +14,6 @@
   pruneopts = "UT"
   revision = "c823c79ea1570fb5ff454033735a8e68575d1d0f"
   version = "v1.3.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:1160dd19218c95560afe4dc48ee630c83b7172e80eeba0a64fe47cf91d5ce50d"
-  name = "github.com/mattmoor/korpc"
-  packages = ["include"]
-  pruneopts = "UT"
-  revision = "b4f5cf606772919d3c5b685f70824aa5acf06e45"
 
 [[projects]]
   branch = "master"
@@ -124,7 +115,6 @@
   analyzer-version = 1
   input-imports = [
     "github.com/golang/protobuf/proto",
-    "github.com/mattmoor/korpc/include",
     "golang.org/x/net/context",
     "google.golang.org/grpc",
   ]
