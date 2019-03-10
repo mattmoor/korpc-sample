@@ -71,7 +71,7 @@
   revision = "5fe7a883aa19554f42890211544aa549836af7b7"
 
 [[projects]]
-  digest = "1:cbc746de4662c66fd24a037501bd65aa0f8ad0bfca0c92576e0abb88864e3741"
+  digest = "1:73344d5dea2db9e6de56a90125c180b53aa63084edc01a350519f092a88f801e"
   name = "google.golang.org/grpc"
   packages = [
     ".",
@@ -86,6 +86,7 @@
     "encoding",
     "encoding/proto",
     "grpclog",
+    "health/grpc_health_v1",
     "internal",
     "internal/backoff",
     "internal/binarylog",
@@ -117,6 +118,9 @@
     "github.com/golang/protobuf/proto",
     "golang.org/x/net/context",
     "google.golang.org/grpc",
+    "google.golang.org/grpc/codes",
+    "google.golang.org/grpc/health/grpc_health_v1",
+    "google.golang.org/grpc/status",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

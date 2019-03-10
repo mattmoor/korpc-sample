@@ -5,6 +5,10 @@ package sample;
 service SampleService {
   rpc Unary(Request) returns (Response) {}
 
+  rpc StreamIn(stream Request) returns (Response) {}
+
+  rpc StreamOut(Request) returns (stream Response) {}
+
   rpc Stream(stream Request) returns (stream Response) {}
 }
 
