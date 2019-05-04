@@ -2,13 +2,16 @@ package streamout
 
 import (
 	"context"
-	"errors"
+	"fmt"
 
 	pb "github.com/mattmoor/korpc-sample/gen/proto"
 )
 
-
 func Impl(ctx context.Context, req *pb.Request, resp chan *pb.Response) error {
-	return errors.New(`You need to implement SampleService.StreamOut!!!`)
+	for i := 0; i < 10; i++ {
+		resp <- &pb.Response{
+			Msg: fmt.Sprintf("%s %d/10", req.Msg, i),
+		}
+	}
+	return nil
 }
-
