@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: baz-three
+  namespace: default
+spec:
+  template:
+    spec:
+      
+      
+      
+      containers:
+      - image: github.com/mattmoor/korpc-sample/gen/entrypoint/three/baz
+        ports:
+        - name: h2c
+          containerPort: 8080
+        readinessProbe:
+          exec:
+            command: ["/ko-app/baz", "probe"]
+        livenessProbe:
+          exec:
+            command: ["/ko-app/baz", "probe"]
+        env:
+        resources:
+          limits:
+          requests:

@@ -1,15 +1,20 @@
 syntax = "proto3";
 
-package sample;
+package mattmoor;
 
-service SampleService {
-  rpc Unary(Request) returns (Response) {}
+service One {
+  rpc Magic(Request) returns (Response) {}
+}
 
-  rpc StreamIn(stream Request) returns (Response) {}
+service Two {
+  rpc Blur(Request) returns (Response) {}
+  rpc Blah(Request) returns (Response) {}
+}
 
-  rpc StreamOut(Request) returns (stream Response) {}
-
-  rpc Stream(stream Request) returns (stream Response) {}
+service Three {
+  rpc Foo(Request) returns (Response) {}
+  rpc Bar(Request) returns (Response) {}
+  rpc Baz(Request) returns (Response) {}
 }
 
 message Request {

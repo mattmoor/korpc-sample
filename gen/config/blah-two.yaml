@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: blah-two
+  namespace: default
+spec:
+  template:
+    spec:
+      
+      
+      
+      containers:
+      - image: github.com/mattmoor/korpc-sample/gen/entrypoint/two/blah
+        ports:
+        - name: h2c
+          containerPort: 8080
+        readinessProbe:
+          exec:
+            command: ["/ko-app/blah", "probe"]
+        livenessProbe:
+          exec:
+            command: ["/ko-app/blah", "probe"]
+        env:
+        resources:
+          limits:
+          requests:

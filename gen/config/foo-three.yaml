@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: foo-three
+  namespace: default
+spec:
+  template:
+    spec:
+      
+      
+      
+      containers:
+      - image: github.com/mattmoor/korpc-sample/gen/entrypoint/three/foo
+        ports:
+        - name: h2c
+          containerPort: 8080
+        readinessProbe:
+          exec:
+            command: ["/ko-app/foo", "probe"]
+        livenessProbe:
+          exec:
+            command: ["/ko-app/foo", "probe"]
+        env:
+        resources:
+          limits:
+          requests:
