@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: sample-service
+spec:
+  template:
+    spec:
+      containers:
+      - image: github.com/mattmoor/korpc-sample/cmd/service
+        ports:
+        - name: h2c
+          containerPort: 8080
+---
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: rest-gateway
+spec:
+  template:
+    spec:
+      containers:
+      - image: github.com/mattmoor/korpc-sample/cmd/rest
+        ports:
+        - containerPort: 8080

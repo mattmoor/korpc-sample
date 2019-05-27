@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package sample;
 
+import "google/api/annotations.proto";
+
 service SampleService {
-  rpc Unary(Request) returns (Response) {}
-
-  rpc StreamIn(stream Request) returns (Response) {}
-
-  rpc StreamOut(Request) returns (stream Response) {}
-
-  rpc Stream(stream Request) returns (stream Response) {}
+  rpc Unary(Request) returns (Response) {
+    option (google.api.http) = {
+      get: "/v1/example/echo/{msg}"
+    };
+  }
 }
 
 message Request {
